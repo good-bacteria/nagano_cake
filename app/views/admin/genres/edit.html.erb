@@ -1,2 +1,19 @@
 <h1>Admin::Genres#edit</h1>
 <p>Find me in app/views/admin/genres/edit.html.erb</p>
+
+<h2>ジャンル編集</h2>
+<%= form_with model: @genre, url: admin_genre_path do |f| %>
+  <%= f.label :name, "ジャンル名" %>
+  <%= f.text_field :name %>
+  <%= f.submit "変更を保存", class: "btn btn-success" %>
+<% end %>
+
+<!-- エラー表示 -->
+<% if @genre.errors.any? %>
+  <h3><%= pluralize(@genre.errors.count, "error") %> prohibited this obj from being saved:</h3>
+  <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
