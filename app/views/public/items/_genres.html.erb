@@ -1,14 +1,14 @@
-<table>
-  <thead>
+<table class="genre-table table table-bordered table-hover shadow-sm">
+  <thead class="genre-thead">
     <tr>
       <th>ジャンル検索</th>
     </tr>
   </thead>
   <tbody>
+    <% genres.each do |genre| %>
     <tr>
-      <% genres.each do |genre| %>
       <td><%= genre.name %></td>
-      <% end %>
     </tr>
+    <% end %>
   </tbody>
 </table>
