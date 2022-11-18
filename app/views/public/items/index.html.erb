@@ -1,5 +1,5 @@
 <div>
-<%=render "/genres", genres: @genres %>
+<%=render "genres", genres: @genres %>
 </div>
 
 <h2><strong>商品一覧</strong>(全<%= @items.count %>件)</h2>
@@ -7,6 +7,10 @@
   <% @items.each do |item| %>
   <div>
       <%= link_to(item_path(item)) do %>
-        <%= image_tag item.image, :size => "200"
+        <%= image_tag item.get_image, size: "200x150" %><br>
+        <%= item.name %><br>
+      <% end %>
+        <%= item.price_add_tax.to_s(:delimited) %>
   </div>
+  <% end %>
 </div>
