@@ -1,1 +1,12 @@
-<h3>ジャンル検索</h3>
+<div>
+<%=render "/genres", genres: @genres %>
+</div>
+
+<h2><strong>商品一覧</strong>(全<%= @items.count %>件)</h2>
+<div>
+  <% @items.each do |item| %>
+  <div>
+      <%= link_to(item_path(item)) do %>
+        <%= image_tag item.image, :size => "200"
+  </div>
+</div>
