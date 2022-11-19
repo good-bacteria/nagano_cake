@@ -1,0 +1,86 @@
+<h1>注文完了画面</h1>
+<h1>Public::Genres#thanks</h1>
+
+<h1 class="bg-success text-white font-weight-bold">
+  <marquee behavior="alternate" direction="up" height="50" scrollamount="5" truespeed>
+    <marquee direction="right" scrollamount="50" truespeed>ご注文ありがとうございました！</marquee>
+  </marquee>
+</h1>
+<h1 class="bg-info text-white font-weight-bold">
+  <marquee behavior="alternate" direction="up" height="50" scrollamount="3" truespeed>
+    <marquee direction="left" scrollamount="50" truespeed>ご注文ありがとうございました！</marquee>
+  </marquee>
+</h1>
+<h1 class="bg-primary text-white font-weight-bold">
+  <marquee behavior="alternate" direction="up" height="50" scrollamount="1" truespeed>
+    <marquee direction="right" scrollamount="50" truespeed>ご注文ありがとうございました！</marquee>
+  </marquee>
+</h1>
+<h1 class="bg-warning text-white font-weight-bold">
+  <marquee behavior="alternate" direction="up" height="50" scrollamount="3" truespeed>
+    <marquee direction="left" scrollamount="50" truespeed>ご注文ありがとうございました！</marquee>
+  </marquee>
+</h1>
+<h1 class="bg-danger text-white font-weight-bold">
+  <marquee behavior="alternate" direction="up" height="50" scrollamount="5" truespeed>
+    <marquee direction="right" scrollamount="50" truespeed>ご注文ありがとうございました！</marquee>
+  </marquee>
+</h1>
+
+<style>
+  .star {
+    animation: kirakira 8s linear;
+    color: yellow;
+    display: inline-block;
+    height: 1em;
+    line-height: 1em;
+    position: fixed;
+    top: -1em;
+    z-index: 1000;
+}
+
+@keyframes kirakira {
+    0% {
+        transform:translateY(0) rotateY(0);
+    }
+    100% {
+        transform:translateY(calc(100vh + 1em)) rotateY(3600deg);
+    }
+}
+</style>
+
+<script>
+  //星を作る関数。n は星の個数。多いほど星が多く振ります。
+function starMaker(n) {
+    var star = document.createElement("div");
+    star.className = "star";
+    star.textContent = "★";
+    for(var i = 0; i < n; i++) {
+        starSet(star);
+    }
+}
+
+//星のセッティングをする関数。
+function starSet(clone) {
+    var starClone = clone.cloneNode(true);
+    var starStyle = starClone.style;
+
+    //星の位置（left）、アニメーションの遅延時間（animation-delay）、サイズ（font-size）をランダムで指定
+    starStyle.left = 100 * Math.random() + "%";
+    starStyle.animationDelay = 8 * Math.random() + "s";
+    starStyle.fontSize = ~~(50 * Math.random() + 20) + "px";
+    document.body.appendChild(starClone);
+
+    //星一つのアニメーションが終わったら新しい星を生成
+    starClone.addEventListener("animationend", function() {
+        this.parentNode.removeChild(this);
+        var star = document.createElement("div");
+        star.className = "star";
+        star.textContent = "★";
+        starSet(star);
+    }, false)
+}
+
+//使用例。星を100個ふらせます。
+starMaker(100)
+</script>
