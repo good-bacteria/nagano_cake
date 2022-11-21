@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
       @order.address = @ship.address
       @order.name = @ship.name
     # 新しいお届け先
-    elsif params[:order][:address_type] == "ship_address"
+    elsif params[:order][:address_type] == "new_address"
       @order = Order.new(order_params)
       # 新しいお届け先情報に空のパラメータが存在する場合、入力画面へ戻る
       if @order.postal_code.empty? || @order.address.empty? || @order.name.empty?
