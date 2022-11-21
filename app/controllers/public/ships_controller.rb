@@ -1,7 +1,7 @@
 class Public::ShipsController < ApplicationController
   def index
     @shipnew =Ship.new
-    @ships =Ship.all
+    @ships =current_customer.ships
   end
   
   def create
@@ -10,7 +10,7 @@ class Public::ShipsController < ApplicationController
     if @shipnew.save
        redirect_to ships_path
     else
-      @ships = Ship.all
+      @ships = current_customer.ships
       render :index
     end
   end
