@@ -43,6 +43,18 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     
     if @order.save
+      
+      # カート商品を注文商品(OrderItems)テーブルへ登録
+      @cart_items = current_customer.cart_items
+      @cart_items.each do |cart_item|
+        order_item = OrderItem.new
+        order_item.order_id = @order.id
+        order_item.item_id = cart_item.item_id
+        order_item.price = cart_item.item.price_add_tax
+        order_item.amount = cart_item.amount
+        order_item.save
+      end
+      
       redirect_to orders_thanks_path
     else
       # カート情報
