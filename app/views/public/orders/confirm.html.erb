@@ -47,7 +47,7 @@
 <table class="table table-borderless">
   <tr>
     <td style="width: 10%;"><strong>支払方法</strong></td>
-    <td><%= @order.payment_method %></td>
+    <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
   </tr>
   <tr>
     <td style="width: 10%;"><strong>お届け先</strong></td>
