@@ -39,7 +39,18 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
-    redirect_to orders_thanks_path
+    @order = Order.new(confirmed_order_params)
+    @order.customer_id = current_customer.id
+    
+    if @order.save
+      redirect_to orders_thanks_path
+    else
+      # カート情報
+      @cart_items = current_customer.cart_items
+      @total_price = 0
+      
+      render "confirm"
+    end
   end
   
   def index
@@ -53,6 +64,10 @@ class Public::OrdersController < ApplicationController
   
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+  end
+  
+  def confirmed_order_params
+    params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method)
   end
   
 end

@@ -58,6 +58,24 @@
   </tr>
 </table>
 
+<!-- エラー表示 -->
+<% if @order.errors.any? %>
+  <h3><%= pluralize(@order.errors.count, "error") %> prohibited this obj from being saved:</h3>
+  <ul>
+    <% @order.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @order, url: orders_path do |f| %>
+  <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+  <%= f.hidden_field :address, :value => @order.address %>
+  <%= f.hidden_field :name, :value => @order.name %>
+  <%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
+  <%= f.hidden_field :total_payment, :value => @total_price + @order.shipping_cost %>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
   <%= f.submit "注文を確定する", class: "btn btn-success" %>
 <% end %>
+
+<%= link_to "注文情報入力へ戻る", new_order_path, class: "btn btn-info mt-1" %>
