@@ -1,54 +1,60 @@
-<h2>Sign up</h2>
 
-<%= form_with model: @customer, url: customer_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %><br />
-    <%= f.label :last_name_kana %>
-    <%= f.text_field :last_name_kana %>
-    <%= f.label :first_name_kana %>
-    <%= f.text_field :first_name_kana %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+      <h2>Sign up</h2>
+
+      <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+
+      <div class="form-group row">
+        <%= f.label :氏名, class: "col-sm-4" %>
+        <%= f.text_field :last_name, class: "form-control col-sm-4" %>
+        <%= f.text_field :first_name, class: "form-control col-sm-4" %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :フリガナ, class: "col-sm-4" %>
+        <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
+        <%= f.text_field :first_name_kana, class: "form-control col-sm-4" %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :郵便番号, class: "col-sm-4" %>
+        <%= f.text_field :postal_code, class: "form-control col-sm-4" %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :住所, class: "col-sm-4" %>
+        <%= f.text_field :address, class: "form-control col-sm-4" %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :電話番号, class: "col-sm-4" %>
+        <%= f.text_field :phone_number, class: "form-control col-sm-4" %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :メールアドレス, class: "col-sm-4" %>
+        <%= f.email_field :email, class: "form-control col-sm-4" %>
+      </div>
+
+      <div class="form-group row">
+        <% if @minimum_password_length %>
+            <%= f.label :"パスワード(#{ @minimum_password_length }文字以上)", class: "col-sm-4" %>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-sm-4" %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :パスワード（確認用）, class: "col-sm-4" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-sm-4" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class:"btn btn-success"%>
+      </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :postal_code %>
-    <%= f.text_field :postal_code %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
