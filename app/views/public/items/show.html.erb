@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2 d-flex align-items-center">
+    <div class="col-2 mt-5 align-items-center">
       <%=render "genres", genres: @genres %>
     </div>
-    <div class="col-md-5 ">
+    <div class="col-5 ">
        <%= image_tag @item.get_image, size: "300x300" %>
     </div>
-    <div class="col-md-5 my-5">
+    <div class="col-5 my-5">
       <h3><strong><%= @item.name %></strong></h3>
       <h4><%= @item.introduction %></h4>
       <h3>¥<%= @item.price_add_tax.to_s(:delimited) %>（税込）</h3>

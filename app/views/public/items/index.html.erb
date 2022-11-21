@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-      <div class="col-md-2 d-flex align-items-center">
+      <div class="col-2 mt-5 align-items-center">
         <%=render "genres", genres: @genres %>
       </div>
-      <div class="col-md-10">
+      <div class="col-9">
         <h2><strong>商品一覧</strong>(全<%= @items.count %>件)</h2>
         <div class="row mx-auto pt-5 pb-5">
           <% @items.each do |item| %>
-            <div>
+            <div class = "col-3">
               <%= link_to(item_path(item)) do %>
                 <%= image_tag item.get_image, size: "200x150" %><br>
                 <%= item.name %><br>
