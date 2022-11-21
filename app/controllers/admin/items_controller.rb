@@ -15,7 +15,6 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item)
     else
       @genres = Genre.all
-      @item =Item.new
       render:new
     end
   end
@@ -35,7 +34,6 @@ class Admin::ItemsController < ApplicationController
      redirect_to admin_item_path
     else
      @genres = Genre.all
-     @item = Item.new
      render :edit
     end
   end
