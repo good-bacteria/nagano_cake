@@ -55,10 +55,13 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-sm-4" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up", class:"btn btn-success col-sm-4" %>
+      <div class="actions row">
+        <p class="col-sm-4"></p><br />
+        <%= f.submit "新規登録", class:"btn btn-success col-sm-3" %>
       </div>
       <% end %>
+      <h2>既に登録済みの方</h2>
+      <%= link_to "こちら", new_customer_session_path %>　からログインしてください。
     </div>
   </div>
 </div>
