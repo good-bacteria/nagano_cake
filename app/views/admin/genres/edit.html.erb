@@ -1,7 +1,5 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
-
 <h2>ジャンル編集</h2>
+
 <%= form_with model: @genre, url: admin_genre_path do |f| %>
   <%= f.label :name, "ジャンル名" %>
   <%= f.text_field :name %>

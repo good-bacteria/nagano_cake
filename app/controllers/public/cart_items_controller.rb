@@ -11,7 +11,7 @@ class Public::CartItemsController < ApplicationController
       @item = Item.find(params[:cart_item][:item_id])
       @genres = Genre.all
       flash[:notice] = "個数を選択してください"
-      render "public/items/show"
+      redirect_to item_path(@item)
     elsif current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
@@ -20,7 +20,7 @@ class Public::CartItemsController < ApplicationController
     else
       @cart_item.save
       @cart_items = current_customer.cart_items.all
-      render "index"
+      redirect_to cart_items_path
     end
   end
 
