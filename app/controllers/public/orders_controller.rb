@@ -55,6 +55,9 @@ class Public::OrdersController < ApplicationController
         order_item.save
       end
       
+      # カート商品を全削除
+      current_customer.cart_items.destroy_all
+      
       redirect_to orders_thanks_path
     else
       # カート情報
