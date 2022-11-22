@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
     # 登録済住所から選択
     elsif params[:order][:address_type] == "ship_address"
       @order = Order.new(order_params)
