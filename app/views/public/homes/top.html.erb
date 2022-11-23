@@ -4,17 +4,17 @@
        <%=render "public/items/genres", genres: @genres %>
     </div>
     <div class="col-9">
-      <div class="top-image">
+      <div class="d-flex justify-content-center">
         <%= image_tag'top.jpg', size:"600x400" %>
-        <p class="card-img-overlay text-white">
+        <p class="card-img-overlay text-white d-flex justify-content-center" style="margin-top: 150px;" >
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員ではない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。
         </p>
       </div>
-      <h3>新着商品</h3>
-      <div class="row">
+      <h3 class="mt-2">新着商品</h3>
+      <div class="row mt-2">
       <% @items.last(4).reverse.each do |item|%>
         <%= link_to item_path(item), class: "col-3 text-dark" do %>
           <%= image_tag item.get_image,  size: "200x150" %><br>
