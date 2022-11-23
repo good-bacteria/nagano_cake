@@ -8,7 +8,7 @@
       <%= render "public/shared/error_messages", resource: resource %>
 
       <div class="form-group row">
-        <%= f.label :氏名, class: "col-sm-4" %>
+        <%= f.label :name, "氏名", class: "col-sm-4" %>
         <div class="form-inline">
         (姓)　<%= f.text_field :last_name, class: "form-control col-sm-4" %>
         (名)　<%= f.text_field :first_name, class: "form-control col-sm-4" %>
@@ -16,7 +16,7 @@
       </div>
 
       <div class="form-group row">
-        <%= f.label :フリガナ, class: "col-sm-4" %>
+        <%= f.label :name_kana, "フリガナ" , class: "col-sm-4" %>
         <div class="form-inline">
         (セイ)<%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
         (メイ)<%= f.text_field :first_name_kana, class: "form-control col-sm-4" %>
@@ -24,22 +24,22 @@
       </div>
 
       <div class="form-group row">
-        <%= f.label :郵便番号, class: "col-sm-4" %>
+        <%= f.label :postal_code, "郵便番号" , class: "col-sm-4" %>
         <%= f.text_field :postal_code, class: "form-control col-sm-4" %>
       </div>
 
       <div class="form-group row">
-        <%= f.label :住所, class: "col-sm-4" %>
+        <%= f.label :address, "住所", class: "col-sm-4" %>
         <%= f.text_field :address, class: "form-control col-sm-7" %>
       </div>
 
       <div class="form-group row">
-        <%= f.label :電話番号, class: "col-sm-4" %>
+        <%= f.label :phone_number , "電話番号" , class: "col-sm-4" %>
         <%= f.text_field :phone_number, class: "form-control col-sm-4" %>
       </div>
 
       <div class="form-group row">
-        <%= f.label :メールアドレス, class: "col-sm-4" %>
+        <%= f.label :email, "メールアドレス" , class: "col-sm-4" %>
         <%= f.email_field :email, class: "form-control col-sm-4" %>
       </div>
 
@@ -51,7 +51,7 @@
       </div>
 
       <div class="form-group row">
-        <%= f.label :パスワード（確認用）, class: "col-sm-4" %><br />
+        <%= f.label :password_confirmation, "パスワード（確認用）" , class: "col-sm-4" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-sm-4" %>
       </div>
 
