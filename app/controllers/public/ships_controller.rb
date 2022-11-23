@@ -1,9 +1,11 @@
 class Public::ShipsController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @shipnew =Ship.new
     @ships =current_customer.ships
   end
-  
+
   def create
     @shipnew = Ship.new(ship_params)
     @shipnew.customer_id = current_customer.id
@@ -14,11 +16,11 @@ class Public::ShipsController < ApplicationController
       render :index
     end
   end
-  
+
   def edit
     @ship = Ship.find(params[:id])
   end
-  
+
   def update
     @ship = Ship.find(params[:id])
     if @ship.update(ship_params)
@@ -27,13 +29,13 @@ class Public::ShipsController < ApplicationController
       render "edit"
     end
   end
-  
+
   def destroy
     ship = Ship.find(params[:id])
     ship.destroy
     redirect_to ships_path
   end
-  
+
   private
 
   def ship_params
