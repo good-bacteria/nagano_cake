@@ -1,9 +1,10 @@
 class Public::OrdersController < ApplicationController
-  
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
   end
-  
+
   def confirm
     # ご自身のご住所
     if params[:order][:address_type] == "customer_address"
@@ -28,22 +29,22 @@ class Public::OrdersController < ApplicationController
     else
       redirect_to new_order_path
     end
-    
+
     # カート情報
     @cart_items = current_customer.cart_items
     @total_price = 0
-    
+
   end
-  
+
   def thanks
   end
-  
+
   def create
     @order = Order.new(confirmed_order_params)
     @order.customer_id = current_customer.id
-    
+
     if @order.save
-      
+
       # カート商品を注文商品(OrderItems)テーブルへ登録
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
@@ -54,37 +55,37 @@ class Public::OrdersController < ApplicationController
         order_item.amount = cart_item.amount
         order_item.save
       end
-      
+
       # カート商品を全削除
       current_customer.cart_items.destroy_all
-      
+
       redirect_to orders_thanks_path
     else
       # カート情報
       @cart_items = current_customer.cart_items
       @total_price = 0
-      
+
       render "confirm"
     end
   end
-  
+
   def index
     @orders = current_customer.orders
   end
-  
+
   def show
     @order = Order.find(params[:id])
   end
-  
-  
+
+
   private
-  
+
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name)
   end
-  
+
   def confirmed_order_params
     params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method)
   end
-  
+
 end
