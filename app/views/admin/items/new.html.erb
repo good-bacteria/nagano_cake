@@ -2,7 +2,7 @@
   <h3>商品新規登録</h3>
   <div class="row">
     <div class="col-6 m-auto">
-      <%= render 'admin/customers/errors', obj:@item %>
+      <%= render 'layouts/errors', obj:@item %>
       <%= form_with model:@item, url: admin_items_path, local:true do |f| %>
         <table class="table table-borderless">
           <tr>
@@ -35,7 +35,7 @@
           </tr>
         </table>
         <div class="text-center">
-          <%= f.submit "新規登録", class: "btn btn-success", style:"font-weight:bold; padding:10px 30px; " %>
+          <%= f.submit "新規登録", class: "btn btn-success", style:"font-weight:bold; padding:10px 30px;" %>
         </div>
       </div>
       <% end %>
