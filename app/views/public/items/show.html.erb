@@ -11,7 +11,6 @@
       <h4><%= @item.introduction %></h4>
       <h3>¥<%= @item.price_add_tax.to_s(:delimited) %>（税込）</h3>
       <div class="mt-5">
-        <%= flash[:notice] %>
         <% if @item.is_active == true %>
           <%= form_with model: @cart_item,url: cart_items_path, local: true do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
