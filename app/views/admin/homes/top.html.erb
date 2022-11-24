@@ -1,12 +1,10 @@
-<div class="container px-5 px-sm-0">
-  <div class="row my-4">
-    <div class="col-md-8 offset-md-1">
-      <h3>注文履歴一覧</h2>
-    </div>
-  </div>
-  <div class="row my-4">
-    <div class="col-md-8 offset-md-1">
-      <table class="table">
+<div class="container">
+  <div class="row">
+    <div class="col-12 px-0 mx-auto">
+      <div class="d-flex p-2 bd-highlight">
+        <h3>注文履歴一覧</h2>
+      </div>
+      <table class="table table-hover table-inverse shadow-lg">
         <thead>
           <tr>
             <th>購入日時</th>
@@ -26,6 +24,7 @@
           <% end %>
         </tbody>
       </table>
+      <div class="mx-auto" style="width: 200px;"><%= paginate @orders, theme: 'twitter-bootstrap-4' %></div>
     </div>
   </div>
 </div>
