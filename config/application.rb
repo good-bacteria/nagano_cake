@@ -24,5 +24,6 @@ module NaganoCake
 
     # デフォルトのタイムゾーンを東京にする
     config.time_zone = 'Tokyo'
+
   end
 end
