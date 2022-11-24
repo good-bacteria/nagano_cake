@@ -1,17 +1,20 @@
-<h2>ジャンル編集</h2>
-
-<%= form_with model: @genre, url: admin_genre_path do |f| %>
-  <%= f.label :name, "ジャンル名" %>
-  <%= f.text_field :name %>
-  <%= f.submit "変更を保存", class: "btn btn-success" %>
-<% end %>
-
-<!-- エラー表示 -->
-<% if @genre.errors.any? %>
-  <h3><%= pluralize(@genre.errors.count, "error") %> prohibited this obj from being saved:</h3>
-  <ul>
-    <% @genre.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <div class="mb-3 p-2 bd-highlight">
+        <h2 class="mb-4">ジャンル編集</h2>
+        <%= render 'layouts/errors', obj: @genre %>
+        <%= form_with model: @genre, url: admin_genre_path, class: "row" do |f| %>
+          <div class="col-auto">
+            <h4><%= f.label :name, "ジャンル名" %></h4>
+          </div>
+          <div class="col-auto">git
+            <%= f.text_field :name, class: "form-control", size: "20" %>
+          </div>
+          <div class="col-auto">
+            <%= f.submit "変更を保存", class: "btn btn-success" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
