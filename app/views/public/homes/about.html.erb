@@ -63,6 +63,7 @@ p {
 </style>
 
 <script>
+$(document).on('turbolinks:load', function() {
 const target = window.document.getElementsByTagName('h1')[0]
 
 const flickerLetter = letter => `<span style="animation: text-flicker-in-glow ${Math.random()*4}s linear both ">${letter}</span>`
@@ -78,5 +79,5 @@ const neonGlory = target => target.innerHTML = flickerAndColorText(target.textCo
 
 neonGlory(target);
 target.onclick = ({ target }) =>  neonGlory(target);
-
+});
 </script>
