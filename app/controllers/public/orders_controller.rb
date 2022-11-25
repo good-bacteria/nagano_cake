@@ -75,7 +75,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = current_customer.orders.find(params[:id])
+    if params[:id] =~ /^[0-9]+$/
+      @order = current_customer.orders.find(params[:id])
+    else
+      redirect_to new_order_path
+    end
   end
 
 
