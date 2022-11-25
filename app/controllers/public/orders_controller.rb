@@ -24,6 +24,7 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       # 新しいお届け先情報に空のパラメータが存在する場合、入力画面へ戻る
       if @order.postal_code.empty? || @order.address.empty? || @order.name.empty?
+        flash[:order_alert] = "新しいお届け先情報は全て入力してください"
         redirect_to new_order_path
       end
     else

@@ -1,6 +1,7 @@
 <div class="container">
   <div class="mx-auto">
     <div class="mb-3 p-2 bd-highlight">
+      <p class="text-danger"><%= flash[:order_alert] %></p>
       
       <h2 class="mb-4">注文情報入力</h2>
       <%= form_with model: @order, url: orders_confirm_path, class: "m-2 p-3 shadow-lg" do |f| %>
