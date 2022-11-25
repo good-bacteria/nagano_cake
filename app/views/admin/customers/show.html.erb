@@ -1,9 +1,12 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-8 offset-md-1 mt-3'>
       <h2><%= @customer.full_name + "さんの会員詳細" %> </h2>
+    </div>
 
-     <table class='table'>
+    <div class='col-md-8 offset-md-1 mt-3'>
+      <p class="text-success"><%= flash[:customer_notice] %></p>
+     <table class='table table-borderless'>
         <tbody>
           <tr>
             <th>会員ID</th>
@@ -42,20 +45,19 @@
 
           <tr>
             <th>会員ステータス</th>
-            <td><% if @customer.is_deleted == false %>
-              有効
+            <% if @customer.is_deleted == false %>
+            <td class="text-success font-weight-bold">有効</td>
               <% else %>
-              無効
+             <td class="text-secondary">無効</td>
               <% end %>
-              </td>
           </tr>
-          
-            <td><%= link_to '編集する',  edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to '注文履歴一覧を見る',admin_path, class: "btn btn-sm btn-primary" %></td>
-                  
+
+            <td><%= link_to '編集する',  edit_admin_customer_path(@customer), class: "btn btn-lg btn-success" %></td>
+            <td><%= link_to '注文履歴一覧を見る',admin_path, class: "btn btn-lg btn-primary" %></td>
+
         </tbody>
       </table>
-      
+
     </div>
   </div>
 </div>
