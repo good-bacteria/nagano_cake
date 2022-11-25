@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
     # 登録済住所から選択
     elsif params[:order][:address_type] == "ship_address"
       @order = Order.new(order_params)
-      @ship = current_customer.ships.find(params[:order][:address_id])
+      @ship = Ship.find(params[:order][:address_id])
       @order.postal_code = @ship.postal_code
       @order.address = @ship.address
       @order.name = @ship.name
@@ -24,7 +24,6 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       # 新しいお届け先情報に空のパラメータが存在する場合、入力画面へ戻る
       if @order.postal_code.empty? || @order.address.empty? || @order.name.empty?
-        flash[:order_alert] = "新しいお届け先情報は全て入力してください"
         redirect_to new_order_path
       end
     else
