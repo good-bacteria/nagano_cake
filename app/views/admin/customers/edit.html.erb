@@ -2,47 +2,47 @@
   <div class='row'>
     <div class='col-md-8 offset-md-1'>
       <h2><%= @customer.full_name + "さんの会員情報編集" %> </h2>
-      
+
       <%= render 'layouts/errors', obj:@customer%>
-      
+
       <%= form_with model: @customer,url: admin_customer_path(@customer), local:true do |f| %>
       <div class="form-group row">
         <%= f.label :会員ID, class: "col-sm-4" %>
         <%= f.label @customer.id, class: "col-sm-4" %>
       </div>
-      
+
       <div class="form-group row">
         <%= f.label :氏名, class: "col-sm-4" %>
         <%= f.text_field :last_name, class: "form-control col-sm-4" %>
         <%= f.text_field :first_name, class: "form-control col-sm-4" %>
       </div>
-       
+
       <div class="form-group row">
         <%= f.label :フリガナ, class: "col-sm-4" %>
         <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
         <%= f.text_field :first_name_kana, class: "form-control col-sm-4" %>
       </div>
-         
+
       <div class="form-group row">
         <%= f.label :郵便番号, class: "col-sm-4" %>
         <%= f.text_field :postal_code, class: "form-control col-sm-4" %>
       </div>
-      
+
       <div class="form-group row">
         <%= f.label :住所, class: "col-sm-4" %>
         <%= f.text_field :address, class: "form-control col-sm-4" %>
       </div>
-      
+
       <div class="form-group row">
         <%= f.label :電話番号, class: "col-sm-4" %>
         <%= f.text_field :phone_number, class: "form-control col-sm-4" %>
       </div>
- 
+
       <div class="form-group row">
         <%= f.label :メールアドレス, class: "col-sm-4" %>
         <%= f.email_field :email, class: "form-control col-sm-4" %>
       </div>
-      
+
       <div class="form-group row">
          <%= f.label :会員ステータス, class: "col-sm-4" %>
         <div class="form-check">
@@ -52,9 +52,9 @@
           <%= f.label :is_deleted, "退会" %>
         </div>
       </div>
- 
-      <div class="actions">
-        <%= f.submit "変更を保存" %>
+
+      <div class="actions text-center">
+        <%= f.submit "変更を保存",class: "btn btn-lg btn-success" %>
       </div>
       <% end %>
     </div>
