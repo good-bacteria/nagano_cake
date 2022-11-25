@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
     # 登録済住所から選択
     elsif params[:order][:address_type] == "ship_address"
       @order = Order.new(order_params)
-      @ship = Ship.find(params[:order][:address_id])
+      @ship = current_customer.ships.find(params[:order][:address_id])
       @order.postal_code = @ship.postal_code
       @order.address = @ship.address
       @order.name = @ship.name
