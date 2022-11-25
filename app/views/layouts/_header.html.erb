@@ -1,13 +1,14 @@
 <header class="sticky-top bg-white shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>ながのCAKE</span></a>
+      <a class="navbar-brand" href="/"><%= image_tag('logo.png') %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
+            <p class="pt-2 mx-3">ようこそ、<%= current_customer.last_name %>さん！</p>
             <li>
               <%= link_to "マイページ", customers_my_page_path, class: "btn btn-outline-secondary mx-3" %>
             </li>
