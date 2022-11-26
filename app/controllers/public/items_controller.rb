@@ -5,6 +5,11 @@ class Public::ItemsController < ApplicationController
       @items = @genre.items.page(params[:page]).per(8)
       @items_count = @genre.items.size
       @genres = Genre.all
+    elsif params[:item_search]
+      @item_search_keyword = params[:keyword]
+      @items = Item.search(@item_search_keyword).page(params[:page]).per(8)
+      @items_count = Item.search(@item_search_keyword).size
+      @genres = Genre.all
     else
       @items = Item.page(params[:page]).per(8)
       @items_count = Item.all.size

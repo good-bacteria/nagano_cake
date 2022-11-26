@@ -9,7 +9,9 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
-
+  
+  scope :search, -> (name) { where('name LIKE ?', "%#{name}%") }
+  
   def get_image
     (image.attached?) ? image : 'no_image.jpg'
   end
