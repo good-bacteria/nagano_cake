@@ -3,8 +3,17 @@
       <div class="col-2 mt-5 align-items-center">
         <%=render "genres", genres: @genres %>
       </div>
-      <div class="col-9 mt-3 ">
-        <h3 style="font-family: serif;"><strong>商品一覧</strong>(全<%= @items.count %>件)</h3>
+      <div class="col-9 mt-3">
+      <% if @genre %>
+        <h2><strong><%= @genre.name %>一覧</strong>(全<%= @items_count %>件)</h2>
+      <% else %>
+        <h2><strong>商品一覧</strong>(全<%= @items_count %>件)</h2>
+        <% if !@item_search_keyword.nil? %>
+          <% if !@item_search_keyword.empty?%>
+            <h6>検索ワード："<%= @item_search_keyword %>"</h6>
+          <% end %>
+        <% end %>
+      <% end %>
         <div class="row mx-auto pt-5 pb-5">
           <% @items.each do |item| %>
             <div class = "col-3">

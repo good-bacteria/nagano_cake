@@ -5,10 +5,10 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
-            <p class="pt-2 mx-3">ようこそ、<%= current_customer.last_name %>さん！</p>
+            <p class="mx-3">ようこそ、<%= current_customer.last_name %>さん！</p>
             <li>
               <%= link_to "マイページ", customers_my_page_path, class: "btn btn-outline-secondary mx-3" %>
             </li>
@@ -51,6 +51,15 @@
               <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary mx-3" %>
             </li>
           <% end %>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="mt-1 mx-3">
+            <%= form_with url: items_path, method: :get, class: "d-flex" do |f| %>
+              <%= f.text_field :keyword, placeholder: "Search", class: "form-control" %>
+              <%= f.hidden_field :item_search, :value => "true" %>
+              <%= f.submit "検索", class: "btn btn-outline-secondary" %>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
