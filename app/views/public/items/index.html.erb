@@ -3,7 +3,7 @@
       <div class="col-2 mt-5 align-items-center">
         <%=render "genres", genres: @genres %>
       </div>
-      <div class="col-9">
+      <div class="col-9 mt-3">
       <% if @genre %>
         <h2><strong><%= @genre.name %>一覧</strong>(全<%= @items_count %>件)</h2>
       <% else %>
