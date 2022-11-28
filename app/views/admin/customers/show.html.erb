@@ -53,7 +53,7 @@
           </tr>
 
             <td><%= link_to '編集する',  edit_admin_customer_path(@customer), class: "btn btn-lg btn-success" %></td>
-            <td><%= link_to '注文履歴一覧を見る',admin_path, class: "btn btn-lg btn-primary" %></td>
+            <td><%= link_to '注文履歴一覧を見る', admin_path(customer_search: "true", customer_id: @customer.id), class: "btn btn-lg btn-primary" %></td>
 
         </tbody>
       </table>
